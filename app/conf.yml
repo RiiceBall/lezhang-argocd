@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: playground-deployment
+  name: lezhang-playground
   labels:
     app: playground
 spec:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: playground
-        image: wil42/playground:v2
+        image: wil42/playground:v1
         ports:
         - containerPort: 8888
 
@@ -24,13 +24,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: playground-service
+  name: hzhou-playground
 spec:
-  type: NodePort
   selector:
     app: playground
+  type: NodePort
   ports:
   - protocol: TCP
     port: 8888
     targetPort: 8888
-
+    nodePort: 32222
